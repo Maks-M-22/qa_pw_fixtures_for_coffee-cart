@@ -9,11 +9,11 @@ export const test = base.extend<{
   menuPage: async ({ page }, use) => {
     const menuPage = new MenuPage(page);
 
-    await use(new MenuPage(page));
+    await use(menuPage);
   },
   cartPage: async ({ page }, use) => {
     const cartPage = new CartPage(page);
 
-    await use(new CartPage(page));
+    await use(cartPage);
   },
 });
