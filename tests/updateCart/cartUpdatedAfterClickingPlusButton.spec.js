@@ -1,9 +1,6 @@
 import { test } from '../_fixtures/fixtures';
 import { PRICE } from '../../src/constants';
-import {
-  priceFormatStr,
-  totalPriceFormatStr,
-} from '../../src/common/helpers/getPriceForQuantity';
+import { priceFormatStr } from '../../src/common/helpers/getPriceForQuantity';
 
 test('Assert cart updated correctly after clicking plus for drinks', async ({
   menuPage,
@@ -18,10 +15,9 @@ test('Assert cart updated correctly after clicking plus for drinks', async ({
   const cappuccinoFormattedPriceForTwo = priceFormatStr(
     PRICE.CAPPUCCINO * unitsNumber,
   );
-  const totalCheckoutFormattedPrice = totalPriceFormatStr(
-    PRICE.CAPPUCCINO + PRICE.ESPRESSO,
-    unitsNumber,
-  );
+  const totalCost =
+    PRICE.CAPPUCCINO * unitsNumber + PRICE.ESPRESSO * unitsNumber;
+  const totalCheckoutFormattedPrice = 'Total: ' + priceFormatStr(totalCost);
 
   await menuPage.open();
   await menuPage.clickCappucinoCup();
